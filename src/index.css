@@ -88,10 +88,10 @@ h1, h2, h3 {
 
 .dashboard .bet-list { margin-top: 1.5rem; }
 
-/* Desktop: compact overview */
+/* Desktop: compact overview — whole page scrolls so wheel works anywhere */
 @media (min-width: 641px) {
-  .layout { height: 100vh; overflow: hidden; }
-  .main { flex: 1; min-height: 0; overflow: auto; padding: 1rem 1.5rem; }
+  .layout { min-height: 100vh; }
+  .main { flex: 1; padding: 1rem 1.5rem; }
   .dashboard__header { margin-bottom: 0.75rem; }
   .dashboard__title { font-size: 2.4rem; }
   .dashboard .summary-cards {
