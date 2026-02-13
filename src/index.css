@@ -178,6 +178,15 @@ h1, h2, h3 {
 
 .bet-list__empty { color: var(--text-muted); margin-top: 1rem; }
 
+/* Hide scrollbar on All bets page (scroll still works) */
+.main:has(.bets-page) {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.main:has(.bets-page)::-webkit-scrollbar {
+  display: none;
+}
+
 .empty-state { color: var(--text-muted); margin-top: 0.5rem; }
 .empty-state p { margin-bottom: 0.5rem; }
 .empty-state__hint { font-size: 0.9rem; }
