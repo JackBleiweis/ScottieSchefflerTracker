@@ -47,8 +47,17 @@ h1, h2, h3 {
 .nav a:hover { color: var(--text); }
 .nav a.active { color: var(--accent); }
 .main { flex: 1; padding: 2rem 1.5rem; max-width: 1000px; margin: 0 auto; width: 100%; }
-.dashboard h1, .bets-page h1 { margin-bottom: 1.25rem; font-size: 1.75rem; letter-spacing: -0.02em; }
-.dashboard p, .bets-page p { color: var(--text-muted); }
+.dashboard__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+.dashboard__title { margin: 0; font-size: 1.75rem; letter-spacing: -0.02em; }
+.dashboard__filters { display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end; }
+.dashboard p { color: var(--text-muted); }
 
 .summary-cards {
   display: grid;
@@ -77,31 +86,18 @@ h1, h2, h3 {
 .card-value .r-push { color: var(--push); }
 .card-value .r-pending { color: var(--pending); }
 
-.dashboard-pending { margin-top: 2.5rem; }
-.dashboard-pending h2 { font-size: 1.25rem; margin-bottom: 1rem; font-family: 'Instrument Serif', Georgia, serif; }
-.dashboard-pending__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
-}
+.dashboard .bet-list { margin-top: 1.5rem; }
 
-/* Desktop: fit dashboard on one screen */
+/* Desktop: compact overview */
 @media (min-width: 641px) {
   .layout { height: 100vh; overflow: hidden; }
   .main { flex: 1; min-height: 0; overflow: auto; padding: 1rem 1.5rem; }
-
-  .dashboard {
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-    height: 100%;
-  }
-  .dashboard h1 { margin-bottom: 0.5rem; font-size: 1.4rem; }
+  .dashboard__header { margin-bottom: 0.75rem; }
+  .dashboard__title { font-size: 2.4rem; }
   .dashboard .summary-cards {
     grid-template-columns: repeat(4, 1fr);
     gap: 0.75rem;
     margin-top: 0.25rem;
-    flex-shrink: 0;
   }
   .dashboard .card {
     padding: 0.65rem 0.9rem;
@@ -110,40 +106,9 @@ h1, h2, h3 {
   .dashboard .card-label { font-size: 0.7rem; }
   .dashboard .card-value { font-size: 1.2rem; }
   .dashboard .card-value.record { font-size: 0.9rem; gap: 0.35rem 0.75rem; }
-
-  .dashboard .dashboard-pending {
-    margin-top: 0.75rem;
-    flex: 1;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-  }
-  .dashboard .dashboard-pending h2 { font-size: 1rem; margin-bottom: 0.5rem; flex-shrink: 0; }
-  .dashboard .dashboard-pending__grid {
-    flex: 1;
-    min-height: 0;
-    overflow: auto;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 0.65rem;
-    align-content: start;
-  }
-  .dashboard .dashboard-pending__grid .bet-card {
-    padding: 0.6rem 0.75rem;
-    gap: 0.4rem;
-  }
-  .dashboard .dashboard-pending__grid .bet-card__tournament { font-size: 0.85rem; }
-  .dashboard .dashboard-pending__grid .bet-card__result { font-size: 0.6rem; padding: 0.15rem 0.4rem; }
-  .dashboard .dashboard-pending__grid .bet-card__row { font-size: 0.8rem; }
-  .dashboard .dashboard-pending__grid .bet-card__body { gap: 0.25rem; }
+  .dashboard .bet-list { margin-top: 1.25rem; }
 }
 
-@media (max-width: 640px) {
-  .dashboard-pending__grid { grid-template-columns: 1fr; }
-}
-
-.bet-list__filters {
-  display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-end;
-}
 .filter-group { display: flex; flex-direction: column; gap: 0.35rem; }
 .filter-group label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
 .filter-select {
@@ -156,10 +121,31 @@ h1, h2, h3 {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;
 }
 .bet-card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  background: var(--surface); border: 2px solid var(--border); border-radius: 12px;
   padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem;
 }
+.bet-card--w { border-color: var(--won); }
+.bet-card--l { border-color: var(--lost); }
+.bet-card--pending { border-color: var(--pending); box-shadow: 0 0 0 1px var(--pending); animation: bet-card-live 2s ease-in-out infinite; }
+.bet-card--push { border-color: var(--push); }
+
+@keyframes bet-card-live {
+  0%, 100% { box-shadow: 0 0 0 1px var(--pending); opacity: 1; }
+  50% { box-shadow: 0 0 8px 1px var(--pending); opacity: 0.95; }
+}
+
 .bet-card__header { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
+.bet-card__header-badges { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; justify-content: flex-end; }
+.bet-card__live {
+  font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700;
+  color: var(--pending); background: rgba(148, 163, 184, 0.15);
+  padding: 0.2rem 0.45rem; border-radius: 4px;
+  animation: bet-card-live-pulse 1.5s ease-in-out infinite;
+}
+@keyframes bet-card-live-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
 .bet-card__tournament { font-weight: 600; font-size: 1rem; }
 .bet-card__result {
   font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.5rem; border-radius: 6px;
@@ -175,15 +161,16 @@ h1, h2, h3 {
 .bet-card__label { color: var(--text-muted); }
 .bet-card__profit.positive span:last-child { color: var(--won); }
 .bet-card__profit.negative span:last-child { color: var(--lost); }
+.bet-card--pending .bet-card__profit span:last-child { color: var(--text); }
 
 .bet-list__empty { color: var(--text-muted); margin-top: 1rem; }
 
-/* Hide scrollbar on All bets page (scroll still works) */
-.main:has(.bets-page) {
+/* Hide scrollbar on main (scroll still works) */
+.main {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-.main:has(.bets-page)::-webkit-scrollbar {
+.main::-webkit-scrollbar {
   display: none;
 }
 

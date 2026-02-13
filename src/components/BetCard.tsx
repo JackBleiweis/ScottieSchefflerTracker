@@ -29,8 +29,11 @@ export default function BetCard({ bet }: Props) {
     <div className={`bet-card bet-card--${bet.result.toLowerCase()}`}>
       <div className="bet-card__header">
         <span className="bet-card__tournament">{bet.tournament}</span>
-        <span className={`bet-card__result bet-card__result--${bet.result.toLowerCase()}`}>
-          {bet.result}
+        <span className="bet-card__header-badges">
+          {bet.result === 'Pending' && <span className="bet-card__live">Live</span>}
+          <span className={`bet-card__result bet-card__result--${bet.result.toLowerCase()}`}>
+            {bet.result}
+          </span>
         </span>
       </div>
       <div className="bet-card__body">
