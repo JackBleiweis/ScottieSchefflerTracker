@@ -1,5 +1,5 @@
 import type { Bet } from '../types/bet'
-import { profitForBet, returnForBet } from '../lib/stats'
+import { profitForBet } from '../lib/stats'
 
 function formatOdds(odds: number): string {
   if (odds > 0) return '+' + odds
@@ -50,16 +50,15 @@ export default function BetCard({ bet }: Props) {
           <span className="bet-card__label">Stake</span>
           <span>${bet.stake.toFixed(2)}</span>
         </div>
-        <div className="bet-card__row">
-          <span className="bet-card__label">{bet.result === 'Pending' ? 'Potential return' : 'Return'}</span>
-          <span>${returnForBet(bet).toFixed(2)}</span>
+        <div className={`bet-card__row bet-card__profit ${profit !== null ? (profit >= 0 ? 'positive' : 'negative') : 'positive'}`}>
+          <span className="bet-card__label">{bet.result === 'Pending' ? 'Potential Profit' : 'Profit'}</span>
+          <span>
+            {bet.result === 'Pending'
+              ? formatMoney(bet.odds > 0 ? bet.stake * (bet.odds / 100) : bet.stake * (100 / Math.abs(bet.odds)))
+              : formatMoney(profit ?? 0)
+            }
+          </span>
         </div>
-        {profit !== null && (
-          <div className={`bet-card__row bet-card__profit ${profit >= 0 ? 'positive' : 'negative'}`}>
-            <span className="bet-card__label">P/L</span>
-            <span>{formatMoney(profit)}</span>
-          </div>
-        )}
       </div>
     </div>
   )
