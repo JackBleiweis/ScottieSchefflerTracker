@@ -1,0 +1,83 @@
+[
+  {
+    "id": "1",
+    "book": "Draftkings",
+    "tournament": "AMEX",
+    "betType": "winner",
+    "odds": 164,
+    "stake": 100,
+    "result": "W"
+  },
+  {
+    "id": "2",
+    "book": "Fanduel",
+    "tournament": "Waste Management",
+    "betType": "top 5",
+    "odds": 170,
+    "stake": 25,
+    "result": "W"
+  },
+  {
+    "id": "3",
+    "book": "Fanduel",
+    "tournament": "Waste Management",
+    "betType": "top 5",
+    "odds": 160,
+    "stake": 25,
+    "result": "W"
+  },
+  {
+    "id": "4",
+    "book": "BetMGM",
+    "tournament": "Waste Management",
+    "betType": "winner",
+    "odds": 2000,
+    "stake": 10,
+    "result": "L"
+  },
+  {
+    "id": "5",
+    "book": "Fanduel",
+    "tournament": "Pebble Beach AT&T Pro Am",
+    "betType": "top 10",
+    "odds": 135,
+    "stake": 24,
+    "result": "Pending"
+  },
+  {
+    "id": "6",
+    "book": "Fanduel",
+    "tournament": "Pebble Beach AT&T Pro Am",
+    "betType": "top 10",
+    "odds": 160,
+    "stake": 25,
+    "result": "Pending"
+  },
+  {
+    "id": "7",
+    "book": "Fanduel",
+    "tournament": "Pebble Beach AT&T Pro Am",
+    "betType": "top 5",
+    "odds": 290,
+    "stake": 0.5,
+    "result": "Pending"
+  },
+  {
+    "id": "8",
+    "book": "Fanduel",
+    "tournament": "Pebble Beach AT&T Pro Am",
+    "betType": "top 20",
+    "odds": -110,
+    "stake": 110,
+    "result": "Pending"
+  },
+  {
+    "id": "9",
+    "book": "Fanduel",
+    "tournament": "Pebble Beach AT&T Pro Am",
+    "betType": "Winner",
+    "odds": 1400,
+    "stake": 10,
+    "result": "Pending"
+  }
+]
