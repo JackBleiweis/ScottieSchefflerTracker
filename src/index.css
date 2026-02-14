@@ -100,7 +100,20 @@ h1, h2, h3 {
   flex-wrap: wrap;
   margin-bottom: 1.25rem;
 }
+.dashboard__title-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
 .dashboard__title { margin: 0; font-size: 1.75rem; letter-spacing: -0.02em; }
+.dashboard__live-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--bg);
+  background: var(--push);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.dashboard__live-btn:hover { filter: brightness(1.1); }
 .dashboard__filters { display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end; }
 .dashboard p { color: var(--text-muted); }
 
@@ -131,6 +144,20 @@ h1, h2, h3 {
 .card-value .r-push { color: var(--push); }
 .card-value .r-pending { color: var(--pending); }
 
+.dashboard__embed {
+  width: 100%;
+  margin-top: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+  min-height: 400px;
+  aspect-ratio: 16 / 9;
+}
+.dashboard__embed iframe {
+  display: block;
+  min-height: 400px;
+}
 .dashboard .bet-list { margin-top: 1.5rem; }
 
 /* Desktop: compact overview — whole page scrolls so wheel works anywhere */

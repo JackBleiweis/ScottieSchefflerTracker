@@ -19,6 +19,7 @@ export default function Dashboard() {
   const [resultFilter, setResultFilter] = useState<ResultFilter>('all')
   const [tournamentFilter, setTournamentFilter] = useState<string>('all')
   const [bookFilter, setBookFilter] = useState<string>('all')
+  const [showLiveEmbed, setShowLiveEmbed] = useState(false)
 
   const tournaments = useMemo(() => [...new Set(bets.map(b => b.tournament))].sort(), [])
   const books = useMemo(() => [...new Set(bets.map(b => b.book))].sort(), [])
@@ -46,7 +47,16 @@ export default function Dashboard() {
   return (
     <div className="dashboard">
       <header className="dashboard__header">
-        <h1 className="dashboard__title">Overview</h1>
+        <div className="dashboard__title-row">
+          <h1 className="dashboard__title">Overview</h1>
+          <button
+            type="button"
+            className="dashboard__live-btn"
+            onClick={() => setShowLiveEmbed(prev => !prev)}
+          >
+            {showLiveEmbed ? 'Hide Live Scottie!' : 'Watch Live Scottie!'}
+          </button>
+        </div>
         <div className="dashboard__filters">
           <div className="filter-group">
             <label>Result</label>
@@ -91,6 +101,21 @@ export default function Dashboard() {
         </div>
       </header>
       <SummaryCards bets={bets} />
+      {showLiveEmbed && (
+        <div className="dashboard__embed">
+          <iframe
+            src="https://embedsports.me/pga-tour/at-t-pebble-beach-pro-am-marquee-group-third-round-stream-2"
+            title="PGA Tour stream"
+            width="100%"
+            height="100%"
+            scrolling="no"
+            frameBorder="0"
+            allowFullScreen
+            allow="fullscreen"
+            referrerPolicy="unsafe-url"
+          />
+        </div>
+      )}
       <BetList bets={filteredBets} currentPosition={currentPosition} />
     </div>
   )
