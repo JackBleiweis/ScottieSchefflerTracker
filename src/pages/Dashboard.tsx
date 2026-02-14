@@ -3,6 +3,7 @@ import { bets } from '../data'
 import SummaryCards from '../components/SummaryCards'
 import BetList from '../components/BetList'
 import type { Bet } from '../types/bet'
+import { useGolf } from '../context/GolfContext'
 
 const RESULT_ORDER: Bet['result'][] = ['Pending', 'W', 'L', 'Push']
 type ResultFilter = 'all' | 'W' | 'L' | 'Pending' | 'Push'
@@ -12,6 +13,8 @@ function sortBets(bets: Bet[]): Bet[] {
 }
 
 export default function Dashboard() {
+  const { data: golfData } = useGolf()
+  const currentPosition = golfData?.position ?? null
   const sortedBets = useMemo(() => sortBets(bets), [])
   const [resultFilter, setResultFilter] = useState<ResultFilter>('all')
   const [tournamentFilter, setTournamentFilter] = useState<string>('all')
@@ -88,7 +91,7 @@ export default function Dashboard() {
         </div>
       </header>
       <SummaryCards bets={bets} />
-      <BetList bets={filteredBets} />
+      <BetList bets={filteredBets} currentPosition={currentPosition} />
     </div>
   )
 }

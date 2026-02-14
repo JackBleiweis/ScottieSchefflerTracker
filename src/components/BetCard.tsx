@@ -1,5 +1,6 @@
 import type { Bet } from '../types/bet'
 import { profitForBet } from '../lib/stats'
+import { pendingBetStatus } from '../lib/betStatus'
 
 function formatOdds(odds: number): string {
   if (odds > 0) return '+' + odds
@@ -20,20 +21,31 @@ function formatBetType(betType: string): string {
   return betType
 }
 
-type Props = { bet: Bet }
+type Props = { bet: Bet; currentPosition?: number | null }
 
-export default function BetCard({ bet }: Props) {
+export default function BetCard({ bet, currentPosition }: Props) {
   const profit = profitForBet(bet)
+  const pendingStatus = bet.result === 'Pending' && currentPosition != null
+    ? pendingBetStatus(currentPosition, bet.betType)
+    : null
+  const pendingMod =
+    bet.result === 'Pending' && pendingStatus != null
+      ? pendingStatus === 'winning'
+        ? 'bet-card--pending--ahead'
+        : 'bet-card--pending--behind'
+      : ''
 
   return (
-    <div className={`bet-card bet-card--${bet.result.toLowerCase()}`}>
+    <div className={`bet-card bet-card--${bet.result.toLowerCase()} ${pendingMod}`.trim()}>
       <div className="bet-card__header">
         <span className="bet-card__tournament">{bet.tournament}</span>
         <span className="bet-card__header-badges">
           {bet.result === 'Pending' && <span className="bet-card__live">Live</span>}
-          <span className={`bet-card__result bet-card__result--${bet.result.toLowerCase()}`}>
-            {bet.result}
-          </span>
+          {bet.result !== 'Pending' && (
+            <span className={`bet-card__result bet-card__result--${bet.result.toLowerCase()}`}>
+              {bet.result}
+            </span>
+          )}
         </span>
       </div>
       <div className="bet-card__body">
@@ -53,7 +65,7 @@ export default function BetCard({ bet }: Props) {
           <span className="bet-card__label">Stake</span>
           <span>${bet.stake.toFixed(2)}</span>
         </div>
-        <div className={`bet-card__row bet-card__profit ${profit !== null ? (profit >= 0 ? 'positive' : 'negative') : 'positive'}`}>
+        <div className={`bet-card__row bet-card__profit ${pendingStatus != null ? (pendingStatus === 'winning' ? 'positive' : 'negative') : profit !== null ? (profit >= 0 ? 'positive' : 'negative') : 'positive'}`}>
           <span className="bet-card__label">{bet.result === 'Pending' ? 'Potential Profit' : 'Profit'}</span>
           <span>
             {bet.result === 'Pending'
