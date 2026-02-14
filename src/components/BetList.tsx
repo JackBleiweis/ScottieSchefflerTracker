@@ -17,3 +17,4 @@ export default function BetList({ bets }: Props) {
     </div>
   )
 }
+
