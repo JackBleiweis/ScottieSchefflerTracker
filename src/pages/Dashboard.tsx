@@ -5,17 +5,11 @@ import BetList from '../components/BetList'
 import type { Bet } from '../types/bet'
 import { useGolf } from '../context/GolfContext'
 
-const RESULT_ORDER: Bet['result'][] = ['Pending', 'W', 'L', 'Push']
 type ResultFilter = 'all' | 'W' | 'L' | 'Pending' | 'Push'
-
-function sortBets(bets: Bet[]): Bet[] {
-  return [...bets].sort((a, b) => RESULT_ORDER.indexOf(a.result) - RESULT_ORDER.indexOf(b.result))
-}
 
 export default function Dashboard() {
   const { data: golfData } = useGolf()
   const currentPosition = golfData?.position ?? null
-  const sortedBets = useMemo(() => sortBets(bets), [])
   const [resultFilter, setResultFilter] = useState<ResultFilter>('all')
   const [tournamentFilter, setTournamentFilter] = useState<string>('all')
   const [bookFilter, setBookFilter] = useState<string>('all')
@@ -25,13 +19,15 @@ export default function Dashboard() {
   const books = useMemo(() => [...new Set(bets.map(b => b.book))].sort(), [])
 
   const filteredBets = useMemo(() => {
-    return sortedBets.filter(b => {
-      if (resultFilter !== 'all' && b.result !== resultFilter) return false
-      if (tournamentFilter !== 'all' && b.tournament !== tournamentFilter) return false
-      if (bookFilter !== 'all' && b.book !== bookFilter) return false
-      return true
-    })
-  }, [sortedBets, resultFilter, tournamentFilter, bookFilter])
+    return [...bets]
+      .filter(b => {
+        if (resultFilter !== 'all' && b.result !== resultFilter) return false
+        if (tournamentFilter !== 'all' && b.tournament !== tournamentFilter) return false
+        if (bookFilter !== 'all' && b.book !== bookFilter) return false
+        return true
+      })
+      .reverse()
+  }, [resultFilter, tournamentFilter, bookFilter])
 
   if (bets.length === 0) {
     return (
@@ -49,13 +45,17 @@ export default function Dashboard() {
       <header className="dashboard__header">
         <div className="dashboard__title-row">
           <h1 className="dashboard__title">Overview</h1>
-          <button
-            type="button"
-            className="dashboard__live-btn"
-            onClick={() => setShowLiveEmbed(prev => !prev)}
-          >
-            {showLiveEmbed ? 'Hide Live Scottie!' : 'Watch Live Scottie!'}
-          </button>
+          {golfData ? (
+            <button
+              type="button"
+              className="dashboard__live-btn"
+              onClick={() => setShowLiveEmbed(prev => !prev)}
+            >
+              {showLiveEmbed ? 'Hide Live Scottie!' : 'Watch Live Scottie!'}
+            </button>
+          ) : (
+            <span className="dashboard__no-tournament">No tournament underway</span>
+          )}
         </div>
         <div className="dashboard__filters">
           <div className="filter-group">

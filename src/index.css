@@ -94,6 +94,7 @@
   white-space: nowrap;
 }
 .dashboard__live-btn:hover { filter: brightness(1.1); }
+.dashboard__no-tournament { font-size: 0.9rem; color: var(--text-muted); font-style: italic; }
 .dashboard__filters { display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end; }
 .dashboard p { color: var(--text-muted); }
 

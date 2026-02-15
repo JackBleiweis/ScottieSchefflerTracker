@@ -42,7 +42,7 @@
     "betType": "top 10",
     "odds": 135,
     "stake": 24,
-    "result": "Pending"
+    "result": "W"
   },
   {
     "id": "6",
@@ -51,7 +51,7 @@
     "betType": "top 10",
     "odds": 160,
     "stake": 25,
-    "result": "Pending"
+    "result": "W"
   },
   {
     "id": "7",
@@ -60,7 +60,7 @@
     "betType": "top 5",
     "odds": 290,
     "stake": 0.5,
-    "result": "Pending"
+    "result": "W"
   },
   {
     "id": "8",
@@ -69,7 +69,7 @@
     "betType": "top 20",
     "odds": -110,
     "stake": 110,
-    "result": "Pending"
+    "result": "W"
   },
   {
     "id": "9",
@@ -78,6 +78,6 @@
     "betType": "Winner",
     "odds": 1400,
     "stake": 10,
-    "result": "Pending"
+    "result": "L"
   }
 ]
