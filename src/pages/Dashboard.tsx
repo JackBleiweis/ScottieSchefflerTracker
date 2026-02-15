@@ -104,7 +104,7 @@ export default function Dashboard() {
       {showLiveEmbed && (
         <div className="dashboard__embed">
           <iframe
-            src="https://embedsports.me/pga-tour/at-t-pebble-beach-pro-am-marquee-group-third-round-stream-2"
+            src="https://embedsports.me/pga-tour/at-t-pebble-beach-pro-am-scheffler-marquee-group-final-round-stream-2"
             title="PGA Tour stream"
             width="100%"
             height="100%"
