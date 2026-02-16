@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react'
 import { bets } from '../data'
 import SummaryCards from '../components/SummaryCards'
 import BetList from '../components/BetList'
-import type { Bet } from '../types/bet'
 import { useGolf } from '../context/GolfContext'
 
 type ResultFilter = 'all' | 'W' | 'L' | 'Pending' | 'Push'
