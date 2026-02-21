@@ -79,5 +79,32 @@
     "odds": 1400,
     "stake": 10,
     "result": "L"
+  },
+  {
+    "id": "10",
+    "book": "Fanduel",
+    "tournament": "The Genesis Invitational",
+    "betType": "top 10",
+    "odds": 240,
+    "stake": 15,
+    "result": "Pending"
+  },
+  {
+    "id": "11",
+    "book": "Fanduel",
+    "tournament": "The Genesis Invitational",
+    "betType": "top 10",
+    "odds": 160,
+    "stake": 25,
+    "result": "Pending"
+  },
+  {
+    "id": "12",
+    "book": "Fanduel",
+    "tournament": "The Genesis Invitational",
+    "betType": "top 20",
+    "odds": 100,
+    "stake": 100,
+    "result": "Pending"
   }
 ]
