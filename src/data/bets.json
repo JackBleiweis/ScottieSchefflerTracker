@@ -87,7 +87,7 @@
     "betType": "top 10",
     "odds": 240,
     "stake": 15,
-    "result": "Pending"
+    "result": "L"
   },
   {
     "id": "11",
@@ -96,7 +96,7 @@
     "betType": "top 10",
     "odds": 160,
     "stake": 25,
-    "result": "Pending"
+    "result": "L"
   },
   {
     "id": "12",
@@ -105,6 +105,6 @@
     "betType": "top 20",
     "odds": 100,
     "stake": 100,
-    "result": "Pending"
+    "result": "W"
   }
 ]
