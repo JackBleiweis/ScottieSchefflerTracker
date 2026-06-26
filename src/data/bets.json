@@ -142,5 +142,14 @@
     "odds": 196,
     "stake": 50,
     "result": "Pending"
+  },
+  {
+    "id": "17",
+    "book": "Draftkings",
+    "tournament": "The Travelers",
+    "betType": "winner",
+    "odds": 100,
+    "stake": 60,
+    "result": "Pending"
   }
 ]
