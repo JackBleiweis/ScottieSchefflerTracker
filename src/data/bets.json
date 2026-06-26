@@ -106,5 +106,41 @@
     "odds": 100,
     "stake": 100,
     "result": "W"
+  },
+  {
+    "id": "13",
+    "book": "Fanduel",
+    "tournament": "U.S. Open",
+    "betType": "top 10",
+    "odds": 110,
+    "stake": 100,
+    "result": "W"
+  },
+  {
+    "id": "14",
+    "book": "BetMGM",
+    "tournament": "The Travelers",
+    "betType": "winner",
+    "odds": 200,
+    "stake": 50,
+    "result": "Pending"
+  },
+  {
+    "id": "15",
+    "book": "Fanduel",
+    "tournament": "The Travelers",
+    "betType": "winner",
+    "odds": 150,
+    "stake": 40.40,
+    "result": "Pending"
+  },
+  {
+    "id": "16",
+    "book": "Draftkings",
+    "tournament": "The Travelers",
+    "betType": "winner",
+    "odds": 150,
+    "stake": 196,
+    "result": "Pending"
   }
 ]
