@@ -151,5 +151,14 @@
     "odds": 100,
     "stake": 60,
     "result": "Pending"
+  },
+  {
+    "id": "18",
+    "book": "BetMGM",
+    "tournament": "The Travelers",
+    "betType": "Victor Hovland winner hedge",
+    "odds": 125,
+    "stake": 160.32,
+    "result": "Pending"
   }
 ]
