@@ -123,7 +123,7 @@
     "betType": "winner",
     "odds": 200,
     "stake": 50,
-    "result": "Pending"
+    "result": "L"
   },
   {
     "id": "15",
@@ -132,7 +132,7 @@
     "betType": "winner",
     "odds": 150,
     "stake": 40.40,
-    "result": "Pending"
+    "result": "L"
   },
   {
     "id": "16",
@@ -141,7 +141,7 @@
     "betType": "winner",
     "odds": 196,
     "stake": 50,
-    "result": "Pending"
+    "result": "L"
   },
   {
     "id": "17",
@@ -150,7 +150,7 @@
     "betType": "winner",
     "odds": 100,
     "stake": 60,
-    "result": "Pending"
+    "result": "L"
   },
   {
     "id": "18",
@@ -159,6 +159,6 @@
     "betType": "Victor Hovland winner hedge",
     "odds": 125,
     "stake": 160.32,
-    "result": "Pending"
+    "result": "W"
   }
 ]
