@@ -160,5 +160,14 @@
     "odds": 125,
     "stake": 160.32,
     "result": "W"
+  },
+  {
+    "id": "19",
+    "book": "BetMGM",
+    "tournament": "3M Open",
+    "betType": "winner",
+    "odds": 160,
+    "stake": 50,
+    "result": "Pending"
   }
 ]
